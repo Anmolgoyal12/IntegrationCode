@@ -3,27 +3,17 @@ $hostname = "localhost"
 $port = "5432"
 $dbname = "procedure_db"
 $username = "anmol_ta"
-
-
-#Secure PRompt for Password
-$password = Read-Host -Prompt "Postgresql Password" -AsSecureString
-
-#Convert Secure String to plain text
-$BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
-$plainPassword=[System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+$password = "Anmol@1819"
 
 # Define the psql query to create table
 $tableCreationQuery = @"
 CREATE TABLE IF NOT EXISTS Integration (
-    SheetName TEXT,
-    FieldName TEXT,
-    CSVName TEXT,
-    Comment TEXT
+    SheetName varchar(100),
+    FieldName varchar(100),
+    CSVName varchar(100),
+    Comment varchar(100)
 );
 "@
-
-#Set envrionment variable for password
-$env:PGPASSWORD=$plainPassword
 
 # Define the psql command to run query
 $psqlCommand = @"
@@ -61,7 +51,3 @@ Set-Content -Path $sqlFilePath -Value $sqlScript
 # Run SQL script through psql to insert data into the table
 $psqlCommand = "psql -h $hostname -p $port -d $dbname -U $username -f `"$sqlFilePath`""
 Invoke-Expression $psqlCommand
-
-
-# Clean up the envrionment variable
-Remove-Item Env:PGPASSWORD 
