@@ -24,7 +24,7 @@ psql -h $hostname -d $dbname -p $port -U $username -c `"$tableCreationQuery`"
 Invoke-Expression $psqlCommand
 
 # Define the Excel file path
-$excelFilePath = "D:\Integration\Automation_Parameters.xlsx"
+$excelFilePath = "D:\Integration\Automation Parameters.xlsx"
 
 # Read Excel data into PowerShell using Import-Excel (make sure to install the ImportExcel module)
 $excelData = Import-Excel -Path $excelFilePath -WorksheetName "Sheet1"

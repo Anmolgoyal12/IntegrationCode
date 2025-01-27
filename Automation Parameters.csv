@@ -1,0 +1,415 @@
+Sheet Name,Field Name,CSV Name,Comment
+Password,Tab Name,
+Password,Field,
+Password,Value,,
+Tenant Information,Tenant URL
+Tenant Information,Tenant UID,Tenant UID Name
+Tenant Information,Tenant Name,Tenant Company Name
+Tenant Information,Job Sceduler Connection Pool,Number of connection to execute job
+Tenant Information,Application Timestamp
+Tenant Information,Meddra Version,Meddra Version
+Tenant Information,Product Study,Product and Study information to be provided
+Tenant Information,Okta sso enabled
+Tenant Information,Azure SSO enabled
+Tenant Information,Who Drug Version,Who Drug Dictionary to be provided
+Tenant Information,Version,version,
+Tenant Information,PVL Upload URL,
+Master Admin User,User ID,admin_user_info
+Master Admin User,Username,admin_user_info
+Master Admin User,Password,admin_user_info
+Master Admin User,Pwd change on first login,admin_user_info
+Master Admin User,Title,admin_user_info
+Master Admin User,First name,admin_user_info
+Master Admin User,Middle name,admin_user_info
+Master Admin User,Last name,admin_user_info
+Master Admin User,User email,admin_user_info
+Master Admin User,SSO,admin_user_info
+Master Admin User,Company UID,admin_user_info
+Application Setting,Company UID,application_setting
+Application Setting,Connection Pool,application_setting
+Application Setting,Tenant URL,application_setting
+Application Setting,App Title,application_setting
+Application Setting,Login page image path,application_setting
+Application Setting,Logo url,application_setting
+Application Setting,Show footer,application_setting
+Application Setting,Footer text,application_setting
+Application Setting,Okta sso enabled,application_setting
+Application Setting,Azure SSO enabled,application_setting
+Application Setting,Timestamp,application_setting
+Application Setting,Version,application_setting
+Oauth Client Details,Client ID,oauth_client_details
+Oauth Client Details,Resource ids,oauth_client_details
+Oauth Client Details,Client Secret,oauth_client_details
+Oauth Client Details,scope,oauth_client_details
+Oauth Client Details,Authorized grant types,oauth_client_details
+Oauth Client Details,Web server redirect uri,oauth_client_details
+Oauth Client Details,Authorities,oauth_client_details
+Oauth Client Details,Access token validity,oauth_client_details
+Oauth Client Details,Refresh token validity,oauth_client_details
+Oauth Client Details,Additional information,oauth_client_details
+Oauth Client Details,Autoapprove,oauth_client_details
+Company,Receiver Identifier*,,Please provide the sender identifier for the noesis tenant which will be used as sender identifier in safety
+Company,Company E-mail,,Please provide email address for the tenant
+Company,Account Lockout Threshold*,,Please provide account auto-lock threshold (days)
+Company,Password Expiry (Days)*,,Please provide password expiry threshold (days)
+Company,Company Logo,,Please provide image file of the company logo for company configuration in NOESIS (optional)
+Company,Title,,"Please provide details of the contact person for the company/tenant"
+Company,Name*  (First Name),,"Please provide details of the contact person for the company/tenant"
+Company,Name    (MIddle Name),,"Please provide details of the contact person for the company/tenant"
+Company,Name*  (Last Name),,"Please provide details of the contact person for the company/tenant"
+Company,Address,,"Please provide details of the contact person for the company/tenant"
+Company,Country*,,"Please provide details of the contact person for the company/tenant"
+Company,Country  (State),,"Please provide details of the contact person for the company/tenant"
+Company,Country (City),,"Please provide details of the contact person for the company/tenant"
+Company,Phone,,"Please provide details of the contact person for the company/tenant"
+Company,E-mail,,"Please provide details of the contact person for the company/tenant"
+Company,Account Name*,,Metadata Storage account name
+Company,Account Key*,,Metadata Storage account key
+Company,File Share*,,Metadata file Share name
+Company,Master List of Elements*,,Master JSON
+Company,Code list*,,Code list JSON
+Company,Date format*,,Date format JSON
+Company,Fup Dup List of Elements,,Fup Dup List of Elements master JSON for Search report
+Company,Web Interface Controls*,,Web Interface JSON
+Company,PMDA Category List,,PMDA Category JSON
+Company,Worfklow(Queues)*,,Worfklow Queues JSON
+Company,Special Status,,Special Status JSON
+Company,Advance Rules,,Advance rule Master JSON
+Folders,Folder Name*,
+Folders,Account Name*
+Folders,Account Key*,,
+Folders,File Share*
+Folders,Input Folder*
+Folders,Process Folder*
+Folders,Archive Folder*
+Folders,Error Folder*
+Folders,Upload Folder
+Affiliate,Affiliate Name *
+Affiliate,Countries *
+Affiliate,Folders *
+Affiliate,Notification E-mail Ids,,"Emails Id(s) for error/informatiom notifications"
+Affiliate,Enable Folder Notifications,Yes - To enable notifications for Folder and API file processing
+Affiliate,Notification Mailbox,
+Mailbox,Mailbox Name*,
+Mailbox,Host Name*,
+Mailbox,Port Number,
+Mailbox,User Name*,
+Mailbox,SSL Enabled,
+Mailbox,Notification Mailbox,,
+Mailbox,Input Folder*,
+Mailbox,Process Folder*
+Mailbox,Archive Folder*
+Mailbox,Manual Folder*
+Mailbox,Notification Folder*,
+Mailbox,Affiliates*
+Mailbox,Default Affiliate*
+Mailbox,Default Folder*,
+Mailbox,Account Name*,
+Mailbox,Account Key*,
+Mailbox,File Share*
+Mailbox,Process Folder*
+Mailbox,Archive Folder*,
+Mailbox,Error Folder*,
+Reporting Destination,Destination Name *,reporting_destination
+Reporting Destination,Identifier *,,Reporting Destination Receiver Indentifier in safety
+Reporting Destination,Destination Type *,
+Reporting Destination,Output Types *,
+Reporting Destination,Workflow States*,
+Reporting Destination,E-mail,
+Reporting Destination,Send File In Folder,
+Reporting Destination,Send Output In E-mail,
+Reporting Destination,Output in English,
+Reporting Destination,Send Output By API,
+Reporting Destination,Send Translated PDF,
+Reporting Destination,Create Report Folders,
+Reporting Destination,Output API,
+Reporting Destination,Send Source Attachment,,"Souce Redacted - Send Redacted form in output file
+Source Original - Send Original form with output file
+Case Draft - Send Draft report with output file
+Others - Send other atttachments of case in output file"
+Reporting Destination,Title,
+Reporting Destination,First Name *,
+Reporting Destination,Middle Name,
+Reporting Destination,Last Name *,
+Reporting Destination,Address,
+Reporting Destination,Country *,
+Reporting Destination,State,
+Reporting Destination,City,
+Reporting Destination,Postcode,
+Reporting Destination,E-mail,
+Reporting Destination,Phone,
+Reporting Destination,Fax,
+Reporting Destination,Organization,
+Reporting Destination,Department,
+Reporting Destination,Account Name *,
+Reporting Destination,Account Key *,,
+Reporting Destination,File Share *,
+Reporting Destination,Output Folder *,
+Reporting Destination,XSL Path *,,
+Reporting Destination,DTD Path *,,
+Reporting Destination,Attachment Folder *,,
+Reporting Destination,Is XML Validation,reporting_destination,
+Reporting Destination,SCHEMA VALIDATION URL,reporting_destination,
+Groups,Name*,,
+Groups,Affiliates*,,
+Groups,Reporting Destinations*,,
+Groups,Other User Access*,,"No Access, Read Only, Unassigned Access - Access config for other users apart from owner of report"
+Groups,Notification E-mail Ids,,"Emails Id(s) for error/informatiom notifications at group level"
+Groups,Auto Processing,,
+Groups,Templates,,
+Groups,Followup Action,,"Send for review, Process as follow-up, Process as initial"
+Groups,Advance Rule,,
+Users,Login ID*,,
+Users,"User Locked/Unlocked",,
+Users,User Disabled,,
+Users,Password*,,
+Users,Password Change On First Login,,
+Users,SSO,,
+Users,Title,,
+Users,First Name*,,
+Users,Middle Name,,
+Users,Last Name*,,
+Users,E-mail,,
+Users,Groups,,
+Users,Roles*,,
+Literature Monitoring,Name*,
+Literature Monitoring,Database*,
+Literature Monitoring,Search Criteria*,
+Literature Monitoring,Filter Drug(s),
+Literature Monitoring,Frequency*,
+Literature Monitoring,Initial Load Start Date,
+Literature Monitoring,Initial Load End Date,
+Literature Monitoring,Query Start Date*,
+Literature Monitoring,Select product(s),
+Advanced Rules,Rule Name*,
+Advanced Rules,Rule Type*,
+Advanced Rules,Default Rule,
+Advanced Rules,Interim Rule,
+Advanced Rules,Rule Conditions,,
+Template Configuration,Name,
+Template Configuration,Category,
+Template Configuration,Text Category,
+Template Configuration,Matching Probability,
+Template Configuration,Auto Encoding Accuracy,
+Template Configuration,Template Language,
+Template Configuration,"FU/DUP Templates",
+Template Configuration,Auto Mode,
+Template Configuration,Execute Missing RG,
+Template Configuration,Auto Merge External Followup,
+Template Configuration,Always Run OCR,
+Template Configuration,Auto Narrative,
+Template Configuration,Transform OCR Output,
+Template Configuration,Auto Narrative Templates*,
+Template Configuration,Watermark Texts,
+Template Configuration,Confidence Threshold*,
+Template Configuration,Excel Headers,
+Template Configuration,Sender-Receiver,
+Template Configuration,XSL Path,,
+Template Configuration,Translation Required toggle,
+Template Configuration,Reverse Translation toggle,
+Template Configuration,Auto Detect Input Language toggle,
+Template Configuration,Translate document,
+Template Configuration,Input Language,
+Template Configuration,Output Language,
+Template Configuration,Translation API,
+Template Configuration,Language Detection Elements,,
+Template Configuration,Rule Type,
+Template Configuration,Rule Name,,
+Template Configuration,Custom Validation toggle,
+Template Configuration,Master List of Elements,
+Template Configuration,Code List,
+Template Configuration,Date Formats,
+Template Configuration,Web Interface Controls,,
+Template Configuration,Select Template Name,
+Template Configuration,Static Template,
+Template Configuration,Dynamic Template,
+Template Configuration,Source file to upload,
+Template Configuration,Annotation JSON,
+Template Configuration,Mapping JSON,,
+Integration,Host Name,integration
+Integration,Port Number,integration
+Integration,User Name,integration
+Integration,Password,integration
+Integration,Download Directory,integration
+Integration,Upload Directory,integration
+Integration,Has private key,integration
+Integration,Key name,integration
+Integration,Blob container,integration
+Integration,Account name,integration
+Integration,Account key,integration
+Integration,File share,integration
+Integration,Ack in,integration
+Integration,Ack XSL,integration
+Integration,Ack error,integration
+Integration,Reporting destination list,integration
+Integration,Safety System,integration,"0-Argus, 1-LSMV"
+Default Admin,User ID,admin_user_info,
+Default Admin,Username,admin_user_info,
+Default Admin,Password,admin_user_info,
+Default Admin,Pwd change on first login,admin_user_info,
+Default Admin,Title,admin_user_info,
+Default Admin,First name,admin_user_info,
+Default Admin,Middle name,admin_user_info,
+Default Admin,Last name,admin_user_info,
+Default Admin,User email,admin_user_info,
+Default Admin,SSO,admin_user_info,
+API Config,API ID,api_config,
+API Config,API Name,api_config,
+API Config,API Queue,api_config,
+Auto narrative template config,Name,auto_narrative_template_config,
+Auto narrative template config,Text,auto_narrative_template_config,
+Other Company config,Auto merge external followup,company_config,
+Other Company config,Bypassvalidator,company_config,Bypassvalidator
+Other Company config,Archival Data Removal Type,company_config,"0-None 1- Complete, 2- Only Storage, 3- Only Source"
+Other Company config,Archival Data Removal,company_config,Archival Data Removal (Number of Days)
+Other Company config,FUP Action,company_config,"Auto Mode Follow-up identified Action: 
+Send for review,
+Process as follow-up,
+Process as initial"
+Other Company config,Log Data Removal,company_config,Delete log data (Number of Days)
+Other Company config,Is Single Case,company_config,Single Case Processing
+Other Company config,Default Reaction,company_config,Default Reaction
+Other Company config,Process NO AE,company_config,Process NO AE Report
+Other Company config,UI Timestamp View,company_config,Timestamp view for Database
+Other Company config,UI Date View,company_config,Date view for database
+Other Company config,UI Timestamp,company_config,Timestamp view for UI
+Other Company config,UI Date,company_config,Date view for UI
+Other Company config,Max API Request Size,company_config,Max API Request Size (In MB)
+Other Company config,ENVIRONMENT Name,company_config,Environment name display on notification mailbox
+Other Company config,Max File Size MB,company_config,
+Other Company config,Max Page Limit,company_config,Max Page limit
+Other Company config,Max Page OCR Limit,company_config,Max Page OCR limit
+Other Company config,Drug Match Strength,Drug match strength for uniqueness drug
+Other Company config,Migration Enabled,,Migration Enable
+Document Translation,Account name,document_translation_config
+Document Translation,Account key,document_translation_config
+Document Translation,Input blob container,document_translation_config
+Document Translation,Output blob container,document_translation_config
+Document Translation,is auto,document_translation_config
+Element primarykey config,Element name,element_primarykey_config,
+Element primarykey config,Primarykeylist,element_primarykey_config,
+Feature,Feature ID,feature,
+Feature,Feature name,feature,
+Feature,Enabled,feature,
+Job info,Job ID,job_info,
+Job info,Task Type,job_info,
+Job info,Name,job_info,
+Job info,Execution URL,job_info,
+Job info,Schedule,job_info,
+Job info,Enabled,job_info,
+Job info,Additional Information,job_info,
+Language Detection Element,Title,language_detection_element
+Language Detection Element,Element Name,language_detection_element
+Language Detection Element,Priority,language_detection_element,
+Notification template Config,Notification Type ID,notification_template_config
+Notification template Config,Notification Type,notification_template_config
+Notification template Config,Notification Template,notification_template_config,
+Oauth SSO Details,Token Endpoint,oauth_sso_details,Token endpoint
+Oauth SSO Details,Client ID,oauth_sso_details,client id
+Oauth SSO Details,Client Secret,oauth_sso_details,client secret
+Oauth SSO Details,Grant Type,oauth_sso_details,Access scope
+Oauth SSO Details,Redirect URI,oauth_sso_details,Noesis URL
+Oauth SSO Details,Content Type,oauth_sso_details,Request content type
+Oauth SSO Details,Authorize Endpoint,oauth_sso_details,Authorize endpoint
+Oauth SSO Details,Logout redirect uri,oauth_sso_details,Noesis URL
+Oauth SSO Details,Login redirect uri,oauth_sso_details,Noesis URL
+Oauth SSO Details,Introspect endpoint,oauth_sso_details,Introspect endpoint
+Oauth SSO Details,Noesis login endpoint,oauth_sso_details,Noesis URL
+Oauth SSO Details,OKTA noesis login uri,oauth_sso_details,For internal use
+Oauth SSO Details,SSO provider,oauth_sso_details,SSO Provider
+Oauth SSO Details,Scope,oauth_sso_details,SCOPE
+Query Based Notification Config,Name,query_based_notification_config
+Query Based Notification Config,Query,query_based_notification_config
+Report Output Type,Output Type ID,report_output_type,
+Report Output Type,Output Type Name,report_output_type
+Report Output Type,Output Queue,report_output_type,
+State Notification Config,Workflow state,state_notification_config
+State Notification Config,Generic state,state_notification_config
+State Notification Config,Action log,state_notification_config
+State Notification Config,Notification Group,state_notification_config
+State Notification Config,Notification Owner,state_notification_config
+State Notification Config,Notification Source,state_notification_config
+State Notification Config,Notification Affiliate,state_notification_config
+State Notification Config,Notification Template,state_notification_config
+State Notification Config,Mail sent log,state_notification_config
+State Notification Config,Subject,state_notification_config
+State Notification Config,Is master notification,state_notification_config,
+Text Dynamic Query,Label,text_dynamic_query
+Text Dynamic Query,Query,text_dynamic_query
+Company Product,FAMILY NAME,product,
+Company Product,DRUG NAME,product
+Company Product,PROD GENERIC NAME,product
+Company Product,DRUG DOSAGE FORM,product
+Company Product,TRADE NAME,product
+Company Product,DRUG AUTH COUNTRY,product
+Company Product,LICENSE TYPE,product
+Company Product,LIC NUMBER,product
+Company Product,INGREDIENT,product_ingredient
+Company Product,CONCENTRATION,product_ingredient
+Company Product,UNIT,product_ingredient
+Company Product,IND LLT CODE,product_indication
+Company Product,IND LLT,product_indication
+Company Product,INDICATION,product_indication
+Company Product,DATASHEET ID,product
+Company Product,DATASHEET,product
+Company Product,DRUG AUTH HOLDER,product
+Company Product,PRODUCT ID,"product,                 product_indication,  product_ingredient,                           product_study"
+Company Study,STUDY KEY,"product_study,                              study"
+Company Study,STUDY NUM,study
+Company Study,PROTOCOL NUM,study,
+Company Study,UNBLIND OK,study,
+Company Study,ENCODING,study,
+Company Study,DRUG AUTO,study,
+Company Study,DRUG DICT,study,
+Company Study,EVENT AUTO,study,
+Company Study,EVENT DICT,study,
+Company Study,EVENT NO MANUAL,study,
+Company Study,EVENT CLOSURE,study,
+Company Study,CLASSIFICATION ID,study,
+Company Study,TEMPLATE,study,
+Company Study,ID PROTOCOL,study,
+Company Study,STUDY ABBREV,study,
+Company Study,STUDY DESC,study,
+Company Study,DEV PHASE ID,study,
+Company Study,CENTRAL EVENT,study,
+Company Study,NON INTERVENTIONAL,study,
+Company Study,DRUG NAME,study,
+Company Study,TRADE NAME,study,
+Company Study,DRUG AUTH COUNTRY,study,
+Company Study,STUDY TYPE,study,
+Product Study Relation,Product ID(Company Product),product_study,
+Product Study Relation,Study Key (Company Study),product_study,
+Role State Config,SORT ID,role_state_config,
+Role State Config,USER TYPE ID,role_state_config,
+Role State Config,USER TYPE,role_state_config,
+Role State Config,JA USER TYPE,role_state_config,
+Role State Config,ACCESS,role_state_config,
+Role State Config,WORKFLOW STATE ID,role_state_config,
+Role State Config,WORKFLOW STATE,role_state_config,
+Role State Config,JA WORKFLOW STATE,role_state_config,
+Role State Config,IS DATA QUALITY REVIEW,role_state_config,
+Role State Config,IS DATA TRANSLATION REVIEW,role_state_config,
+Role State Config,INLINE PERCENTAGES,role_state_config,
+Workflow state config,CONFIG ID,wf_state_config,
+Workflow state config,CONFIG NAME,wf_state_config
+Workflow state config,WORKFLOW STATE LIST IDs,wf_state_config
+Workflow Rule,STATE FROM,workflow_rule
+Workflow Rule,STATE TO,workflow_rule
+Master JSON,E2B Element,
+Master JSON,E2B (R3) Descriptive Element Name,
+Master JSON,MAX LENGTH,
+Master JSON,"DATA
+TYPE",
+Master JSON,VALUES ALLOWED,
+Master JSON,CONFORMANCE,
+Code List JSON,Key,
+Code List JSON,CodeName,
+Code List JSON,codedvalue,
+Code List JSON,decodedvalue,
+Date Format JSON,S.No.,
+Date Format JSON,Format,
+Special Status JSON,Status,,
+Special Status JSON,Element,,
+Special Status JSON,Keywords,,
+Special Status JSON,Condition,,
+,
