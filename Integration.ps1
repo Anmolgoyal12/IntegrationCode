@@ -20,14 +20,14 @@ CREATE TABLE IF NOT EXISTS Integration (
     CSVName   TEXT,
     Comment TEXT
     created_by INTEGER;
-    # updated_by INTEGER;
-    # Deleted Boolean DEFAULT FALSE,
-    # same_env_change Boolean DEFAULT False,
-    # diff_env_change Boolean DEFAULT False,
-    # TabeleName TEXT,
-    # ColumnName TEXT,
-    # created_dt TIMESTAMP DEFAULT NOW(),
-    # updated_dt TIMESTAMP
+    updated_by INTEGER;
+    Deleted Boolean DEFAULT FALSE,
+    same_env_change Boolean DEFAULT False,
+    diff_env_change Boolean DEFAULT False,
+    TabeleName TEXT,
+    ColumnName TEXT,
+    created_dt TIMESTAMP DEFAULT NOW(),
+    updated_dt TIMESTAMP
 );
 "@
 # Define the psql command to run query
