@@ -25,7 +25,9 @@ CREATE TABLE IF NOT EXISTS Integration (
     same_env_change Boolean DEFAULT False,
     diff_env_change Boolean DEFAULT False,
     TabeleName TEXT,
-    ColumnName TEXT
+    ColumnName TEXT,
+    created_dt TIMESTAMP DEFAULT NOW(),
+	updated_dt TIMESTAMP
 
 );
 "@
