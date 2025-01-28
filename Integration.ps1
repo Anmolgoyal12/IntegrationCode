@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS Integration (
     SheetName TEXT,
     FieldName TEXT,
     CSVName   TEXT,
-    Comment TEXT
-    created_by INTEGER;
-    updated_by INTEGER;
+    Comment TEXT,
+    created_by INTEGER,
+    updated_by INTEGER,
     Deleted Boolean DEFAULT FALSE,
     same_env_change Boolean DEFAULT False,
     diff_env_change Boolean DEFAULT False,
