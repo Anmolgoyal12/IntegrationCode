@@ -4,34 +4,35 @@ $port = "5432"
 $dbname = "procedure_db"
 $username = "anmol_ta"
 
+# Prompt for password securely
+$password = Read-Host -Prompt "Enter PostgreSQL password" -AsSecureString
 
-#Secure PRompt for Password
-$password = Read-Host -Prompt "Postgresql Password" -AsSecureString
-
-#Convert Secure String to plain text
-$BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
-$plainPassword=[System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+# Convert the SecureString password to plain text for psql (necessary for external commands)
+$BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
+$plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
 
 # Define the psql query to create table
 $tableCreationQuery = @"
 CREATE TABLE IF NOT EXISTS Integration (
     SheetName TEXT,
     FieldName TEXT,
-    CSVName TEXT,
+    CSVName   TEXT,
     Comment TEXT
 );
 "@
-
-#Set envrionment variable for password
-$env:PGPASSWORD=$plainPassword
-
 # Define the psql command to run query
 $psqlCommand = @"
-psql -h $hostname -d $dbname -p $port -U $username -c `"$tableCreationQuery`"
+psql -h $hostname -d $dbname -p $port -U $username -w -c `"$tableCreationQuery`"
 "@
 
-# Execute the command to create table 
+# Set PGPASSWORD environment variable temporarily (only for the current process)
+$env:PGPASSWORD = $plainPassword
+
+# Execute the command to create the table 
 Invoke-Expression $psqlCommand
+
+# Clean up the environment variable after use
+Remove-Item Env:PGPASSWORD
 
 # Define the Excel file path
 $excelFilePath = "D:\Integration\Automation Parameters.xlsx"
@@ -58,10 +59,12 @@ $sqlScript = $sqlStatements -join "`n"
 $sqlFilePath = "D:\Integration\insert_records.sql"
 Set-Content -Path $sqlFilePath -Value $sqlScript
 
+# Set PGPASSWORD environment variable again for running the insert script
+$env:PGPASSWORD = $plainPassword
+
 # Run SQL script through psql to insert data into the table
 $psqlCommand = "psql -h $hostname -p $port -d $dbname -U $username -f `"$sqlFilePath`""
 Invoke-Expression $psqlCommand
 
-
-# Clean up the envrionment variable
-Remove-Item Env:PGPASSWORD 
+# Clean up the environment variable after use
+Remove-Item Env:PGPASSWORD
