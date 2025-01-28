@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS Integration (
     Comment TEXT,
     created_by INTEGER;
     updated_by INTEGER;
-    Deledted Boolean DEFAULT FALSE,
+    Deleted Boolean DEFAULT FALSE,
     same_env_change Boolean DEFAULT False,
     diff_env_change Boolean DEFAULT False,
     TabeleName TEXT,
