@@ -1,0 +1,74 @@
+Before Startig for Postgresql in powershell 
+    1. We have the connection details 
+    2. In Connection Details we should Know the Hostname,
+         port,password,dbname,username
+    3. After getting step 2 details Now we have two options
+        3.1 To hide password details 
+        3.2 To show the password details in script.
+    4. If we have to select option 3.1 then we have to encrypt the password by using Read-Host.
+        4.1 Read-Host is kind of powershell cmdlet for Prompting the input to user.
+        4.2 When it is combined with -AsSecureString Parameters then it helps to encript
+        the Confidencial informatiom like password etc,
+        4.3 Example :
+            $username=Read-Host -Prompt "Enter a Username"
+            This will display in console "Enter a Username" and store in $username variable.
+        4.4 After Encrypting gthe string now we have to decrypt
+        4.5 for Example :
+            $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
+            Above line describes that encryptes secure string which is stored in $password in a unencrypted  form which is represneted in binary string or bstr .
+            As the BSTR is a kind of data type used in windows for string in memory.
+            If we want to perform  decryption to plain text then we have to use bstr or binary string in windows.
+            it implies the decrypted secure string converts into redable format in memory but it can read by normal humans.
+
+            SecureStringToBSTR is part os System.Runtime.InteropServices.Marshal.
+            SecureStringToBSTR takes the encrypted string and decrypted into bstr as it is block of memory that decrypts the password  into unicode format.
+
+            $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+            Above line converts the decrypted bstr into plain text which can be redaible.
+
+            PtrToStringAuto method is also part of System.Runtime.InteropServices.Marshal class,  which takes a pointer to memory block and onverts it into regular string in powershell.
+            as this line implies the decrypted memory data is converted into readable plain text.
+        4.6 Next steps is to define the table structure as we have to create table.
+                @tableCreationQuery is script which is used to create a the table in psql dataase . as it help in creting the table in postgresql.
+            
+            Now we have to crete table and check if not exist . it implies that check if table not exist then it create the table if exist not create the table.
+            now give column name with data type as text becuase the data can be large .
+
+        4.7 $env:PGPASSWORD=$plainPassword. it helps to set the Environment variable for password
+
+            $env:PGPASSWORD: it refers to Environment variable on powershell
+            PGPASSWORD: is the name of envrionment variable that helps in connecting with postgresql command line to pass the database password.
+
+            $plainPassword:this implies that password which is decrypted when user enter the password in console. 
+        4.8 $psqlCommand = @" 
+            psql -h $hostname -d $dbname -p $port -U $username -c "$tableCreationQuery"
+            "@  it help to define multi line string that holds postgresql command used for creating the  table in postgresql database
+            @" ... "@:: is used to store the multi line string literal
+            psql: it is postgresql command that allow you to execute queries.
+            -h $hostname:: hostname(-h is the hostname of the postgresql server)
+            -d $dbname:: database name (-d database name which is used to connect)
+            -p $port: is the port Number to connect to database
+            -u $username: is the username who connect to postgresql database.
+            -c "$tableCreationQuery": this command will run as part of psql Execution.
+        4.9 Invoke-Expression $psqlCommand: it evaluates or executes string stored in the $psqlCommand variable as if it were a command typed directly into the PowerShell terminal.
+        $psqlCommand is powershell variable that holds multilinevariable
+        5. Now next step is to store we have to take excel file path as if we have done from local then local path will be given.
+            5.1 now we have to read data from excel before that we have to install ImportExcel module
+            5.2 now we have to insert the data into table .
+            5.3 $sqlScript = $sqlStatements -join "`n" isused to combine multiple insert statement into one script using array
+            5.4 Now we have to give sql file path where out sql file will give Required output
+            5.5 Set-Content: it is cmdlet in powershell used to write data in file. it can either create a new file or replace the existing file with new content.
+            5.6 -Path :specifies the path should be written and $sqlFilePath: it implies exact path of sql file.
+            5.7 -Value: specifies the content that will be written in file.
+            5.8 $sqlScript: as it contains sql script by joining mulitple insert statements.
+            if the file is already exist then it overwrite the content of the file.
+        6. $psqlCommand = "psql -h $hostname -p $port -d $dbname -U $username -f `"$sqlFilePath`"":
+            $sqlFilePath: implies the sql file path in which data is written.the path should be correct.
+        7. Invoke-Expression $psqlCommand: it is used to execute the  string which is stored in $psqlCommand variable  into powershell.   
+                7.1.  Invoke-Expression: it is cmdlet in powershell that runs as a command or expression when any string is passed to it.
+                7.2. $psqlCommand: the variable actual psql command to be executed.
+                7.3  Remove-Item Env:PGPASSWORD  : is used to delete the envrionment variable from powershell session 
+                7.4 Remove-Item:it is powershell cmdlet used to delete or remove files,registery keys or vaiables that is stored as Environment variable.
+                7.5 ENV: it is a powershell provider that provide the access to use Environment variable.
+                7.6 PGPASSWORD  : it is Environment variable which we used earlier to store the postgresql password into plin text.
+                

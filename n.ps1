@@ -4,42 +4,33 @@ $port = "5432"
 $dbname = "procedure_db"
 $username = "anmol_ta"
 
-# Prompt for password securely
-$password = Read-Host -Prompt "Enter PostgreSQL password" -AsSecureString
+# Secure prompt for Password
+$password = Read-Host -Prompt "Postgresql Password" -AsSecureString
 
-# Convert the SecureString password to plain text for psql (necessary for external commands)
+# Convert Secure String to plain text
 $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
 $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
 
 # Define the psql query to create table
 $tableCreationQuery = @"
 CREATE TABLE IF NOT EXISTS Integration (
-    id Serial PRIMARY KEY,
     SheetName TEXT,
     FieldName TEXT,
-    CSVName   TEXT,
-    Comment TEXT,
-    created_by INTEGER;
-    updated_by INTEGER;
-    Deledted Boolean DEFAULT FALSE,
-    same_env_change Boolean DEFAULT False,
-    diff_env_change Boolean DEFAULT False
-
+    CSVName TEXT,
+    Comment TEXT
 );
 "@
-# Define the psql command to run query
-$psqlCommand = @"
-psql -h $hostname -d $dbname -p $port -U $username -w -c `"$tableCreationQuery`"
-"@
 
-# Set PGPASSWORD environment variable temporarily (only for the current process)
+# Set environment variable for password
 $env:PGPASSWORD = $plainPassword
 
-# Execute the command to create the table 
-Invoke-Expression $psqlCommand
+# Define the psql command to run query
+$psqlCommand = @"
+psql -h $hostname -d $dbname -p $port -U $username -c `"$tableCreationQuery`"
+"@
 
-# Clean up the environment variable after use
-Remove-Item Env:PGPASSWORD
+# Execute the command to create table 
+Invoke-Expression $psqlCommand
 
 # Define the Excel file path
 $excelFilePath = "D:\Integration\Automation Parameters.xlsx"
@@ -51,12 +42,18 @@ $excelData = Import-Excel -Path $excelFilePath -WorksheetName "Sheet1"
 $sqlStatements = @()
 
 foreach ($row in $excelData) {
-    # Prepare SQL INSERT statement
-    $insertStatement = @"
-    INSERT INTO integration (sheetname, fieldname, csvname, comment)
-    VALUES ('$($row.'Sheet Name')', '$($row.'Field Name')', '$($row.'CSV Name')', '$($row.Comment)');
+    # Check if the required fields have valid values (non-empty)
+    if (![string]::IsNullOrWhiteSpace($row.'Sheet Name') -and 
+        (![string]::IsNullOrWhiteSpace($row.'Field Name')) -and
+        (![string]::IsNullOrWhiteSpace($row.'CSV Name'))) {
+        
+        # Prepare SQL INSERT statement only for valid rows
+        $insertStatement = @"
+        INSERT INTO integration (sheetname, fieldname, csvname, comment)
+        VALUES ('$($row.'Sheet Name')', '$($row.'Field Name')', '$($row.'CSV Name')', '$($row.Comment)');
 "@
-    $sqlStatements += $insertStatement
+        $sqlStatements += $insertStatement
+    }
 }
 
 # Combine all insert statements into one SQL script
@@ -66,12 +63,9 @@ $sqlScript = $sqlStatements -join "`n"
 $sqlFilePath = "D:\Integration\insert_records.sql"
 Set-Content -Path $sqlFilePath -Value $sqlScript
 
-# Set PGPASSWORD environment variable again for running the insert script
-$env:PGPASSWORD = $plainPassword
-
 # Run SQL script through psql to insert data into the table
 $psqlCommand = "psql -h $hostname -p $port -d $dbname -U $username -f `"$sqlFilePath`""
 Invoke-Expression $psqlCommand
 
-# Clean up the environment variable after use
+# Clean up the environment variable
 Remove-Item Env:PGPASSWORD
