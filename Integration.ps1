@@ -19,7 +19,6 @@ CREATE TABLE IF NOT EXISTS Integration (
     FieldName TEXT,
     CSVName   TEXT,
     Comment TEXT
-   
 
 );
 "@
