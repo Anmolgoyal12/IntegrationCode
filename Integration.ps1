@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS Integration (
     id Serial PRIMARY KEY,
     SheetName TEXT,
     FieldName TEXT,
-    CSVName   TEXT,
+    CSVName TEXT,
     Comment TEXT,
     created_by INTEGER,
     updated_by INTEGER,
@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS Integration (
     updated_dt TIMESTAMP
 );
 "@
+
 # Define the psql command to run query
 $psqlCommand = @"
 psql -h $hostname -d $dbname -p $port -U $username -w -c `"$tableCreationQuery`"
@@ -50,15 +51,30 @@ $excelFilePath = "D:\Integration\Automation Parameters.xlsx"
 # Read Excel data into PowerShell using Import-Excel (make sure to install the ImportExcel module)
 $excelData = Import-Excel -Path $excelFilePath -WorksheetName "Sheet1"
 
-# SQL insert statements ko generate karna
+# SQL insert statements generation
 $sqlStatements = @()
 
 foreach ($row in $excelData) {
-    # Prepare SQL INSERT statement
-    $insertStatement = @"
-    INSERT INTO integration (sheetname, fieldname, csvname, comment)
-    VALUES ('$($row.'Sheet Name')', '$($row.'Field Name')', '$($row.'CSV Name')', '$($row.Comment)');
+    # Prepare SQL INSERT statement with handling for blank values
+  $insertStatement = @"
+INSERT INTO integration (sheetname, fieldname, csvname, comment, created_by, updated_by, deleted, same_env_change, diff_env_change, tabelename, columnname, created_dt, updated_dt)
+VALUES (
+    '$($row.'Sheet Name')',
+    '$($row.'Field Name')',
+    '$($row.'CSV Name')',
+    '$($row.Comment)',
+    $(if ($row.'created_by') {"'$($row.'created_by')'"} else {'NULL'}),
+    $(if ($row.'updated_by') {"'$($row.'updated_by')'"} else {'NULL'}),
+    $(if ($row.'Deleted' -eq $true) {'TRUE'} else {'FALSE'}),
+    $(if ($row.'same_env_change' -eq $true) {'TRUE'} else {'FALSE'}),
+    $(if ($row.'diff_env_change' -eq $true) {'TRUE'} else {'FALSE'}),
+    $(if ($row.'TabeleName') {"'$($row.'TabeleName')'"} else {'NULL'}),
+    $(if ($row.'ColumnName') {"'$($row.'ColumnName')'"} else {'NULL'}),
+    $(if ($row.'created_dt') {"'$($row.'created_dt')'"} else {'NOW()'}),
+    $(if ($row.'updated_dt') {"'$($row.'updated_dt')'"} else {'NULL'})
+);
 "@
+
     $sqlStatements += $insertStatement
 }
 
