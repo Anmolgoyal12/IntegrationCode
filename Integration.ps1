@@ -2,7 +2,7 @@
 $hostname = "localhost"
 $port = "5432"
 $dbname = "procedure_db"
-$username = "anmol_ta"
+$username = "anmolta"
 
 # Prompt for password securely
 $password = Read-Host -Prompt "Enter PostgreSQL password" -AsSecureString
